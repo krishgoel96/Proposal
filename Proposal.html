@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal</title>
+    <style>
+        body {
+            background-color: cyan;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #message-container {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        #response-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #heart-container {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #heart-image {
+            width: 200px; /* Adjust the size as needed */
+            height: 200px; /* Adjust the size as needed */
+        }
+
+        #heartbroken-image {
+            width: 200px; /* Adjust the size as needed */
+            height: 200px; /* Adjust the size as needed */
+        }
+
+        #message-below-gif {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="message-container"></div>
+<div id="response-container">
+    <label>Please say 'yes' or 'no': </label>
+    <input type="text" id="user-response">
+    <button onclick="captureResponse()">Submit</button>
+</div>
+
+<div id="heart-container">
+    <img id="heart-image" src="https://media.giphy.com/media/4N1wOi78ZGzSB6H7vK/giphy.gif" alt="Heart GIF">
+    <p id="you-and-me">You and me always forever</p>
+    <p id="message-below-gif"></p>
+</div>
+
+<script>
+    function displayMessage(message) {
+        var container = document.getElementById('message-container');
+        container.innerHTML += message + '<br>';
+    }
+
+    function propose() {
+        displayMessage("Hey Yashi,");
+        setTimeout(function() {
+            displayMessage("I've created a little program just for you.");
+        }, 1000);
+
+        setTimeout(function() {
+            displayMessage("Would you like to guide me in my journey of love and sadness and be there for me whenever I need you?");
+            document.getElementById('response-container').style.display = 'block';
+        }, 2000);
+    }
+
+    function captureResponse() {
+        var response = document.getElementById('user-response').value.toLowerCase();
+        var container = document.getElementById('message-container');
+        var responseContainer = document.getElementById('response-container');
+        var heartContainer = document.getElementById('heart-container');
+        var heartImage = document.getElementById('heart-image');
+        var youAndMeText = document.getElementById('you-and-me');
+        var messageBelowGif = document.getElementById('message-below-gif');
+
+        if (response === 'yes') {
+            container.innerHTML += "sachi mein? I am seriously happy to offer my life to you<br>";
+            heartContainer.style.display = 'block';
+        } else if (response === 'no') {
+            container.innerHTML += "Koi ni,  I hope we can still be best friends like we used to be, closest as we can be<br>";
+            heartImage.src = "https://media.giphy.com/media/6f2vpLNBPFUnZAgDCM/giphy.gif"; // Replace with your heartbroken GIF
+            heartContainer.style.display = 'block';
+            youAndMeText.style.display = 'none'; // Hide the "You and me always forever" text
+            messageBelowGif.innerHTML = "It's okay, I would still be your closest friend";
+        }
+
+        // Hide the response container after capturing the response
+        responseContainer.style.display = 'none';
+    }
+
+    propose();
+</script>
+
+</body>
+</html>
